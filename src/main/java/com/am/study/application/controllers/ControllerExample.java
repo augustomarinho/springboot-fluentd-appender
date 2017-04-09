@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import static net.logstash.logback.marker.Markers.append;
+
 /**
  * Created by augustomarinho on 26/03/17.
  */
@@ -20,7 +22,7 @@ public class ControllerExample {
     @RequestMapping(value = "/query/cpf/{cpf}", method = RequestMethod.GET)
     public ResponseEntity<String> queryByCPF(@PathVariable String cpf) {
         try {
-            logger.info("Recendo requisicao para CPF " + cpf);
+            logger.info(append("CPF", cpf), "Recendo requisicao para CPF " + cpf);
             return new ResponseEntity<String>("OK", HttpStatus.OK);
         } catch (Exception e) {
             return new ResponseEntity<String>(HttpStatus.INTERNAL_SERVER_ERROR);
