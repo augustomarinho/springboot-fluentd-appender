@@ -4,6 +4,7 @@ FROM openjdk:8u212-jdk-slim-stretch
 EXPOSE 8080
 
 #INSTALLING APP
+RUN mkdir config
 VOLUME /tmp
 ADD springboot-fluentd-appender-1.0-SNAPSHOT.jar app.jar
 RUN sh -c 'touch /app.jar'
